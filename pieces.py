@@ -7,9 +7,9 @@ class Coordinate(object):
         return 'Coordinate({0.x:d}, {0.y:d})'.format(self)
 
 class Piece:
-    def __init__(self, type, position, orientation, falling):
+    def __init__(self, type, orientation, position, falling):
         self.type = type #J, L, I, S, T, Z and O
-        self.orientation = orientation #1(up), 2(down), 3(left), 4(right)
+        self.orientation = 1 #1(up), 2(down), 3(left), 4(right)
         self.falling = True
 
         if type == "J": #initializing position of the block
@@ -36,66 +36,90 @@ class Piece:
     def stopFalling():
         falling = False
 
-    def Flip():
+    def Flip(): #rotates block based on its current orientation and block type
         if type == "J":
             if orientation == 1:
                 position = [Coordinate(0, 1), Coordinate(0, 2), Coordinate(1, 1), Coordinate(2, 1)]
+                orientation += 1
             else if orientation == 2:
                 position = [Coordinate(1, 0), Coordinate(1, 1), Coordinate(1, 2), Coordinate(1, 3)]
+                orientation += 1
             else if orientation == 3:
                 position = [Coordinate(0, 1), Coordinate(1, 1), Coordinate(2, 0), Coordinate(2, 1)]
+                orientation += 1
             else if orientation == 4:
                 position = [Coordinate(0, 0), Coordinate(1, 0), Coordinate(1, 1), Coordinate(1, 2)]
+                orientation = 1
 
         else if type == "L":
             if orientation == 1:
                 position = [Coordinate(0, 1), Coordinate(1, 1), Coordinate(2, 1), Coordinate(0, 2)]
+                orientation += 1
             else if orientation == 2:
                 position = [Coordinate(1, 0), Coordinate(1, 1), Coordinate(1, 2), Coordinate(2, 2)]
+                orientation += 1
             else if orientation == 3:
                 position = [Coordinate(0, 1), Coordinate(1, 1), Coordinate(2, 1), Coordinate(2, 0)]
+                orientation += 1
             else if orientation == 4:
                 position = [Coordinate(2, 0), Coordinate(0, 1), Coordinate(1, 1), Coordinate(2, 1)]
+                orientation = 1
 
         else if type == "I":
             if orientation == 1:
                 position = [Coordinate(0, 2), Coordinate(1, 2), Coordinate(2, 2), Coordinate(3, 2)]
+                orientation += 1
             else if orientation == 2:
                 position = [Coordinate(2, 0), Coordinate(2, 1), Coordinate(2, 2), Coordinate(2, 3)]
+                orientation += 1
             else if orientation == 3:
                 position = [Coordinate(0, 1), Coordinate(1, 1), Coordinate(2, 1), Coordinate(3, 1)]
+                orientation += 1
             else if orientation == 4:
                 position = [Coordinate(1, 0), Coordinate(1, 1), Coordinate(1, 2), Coordinate(1, 3)]
+                orientation = 1
 
         else if type == "S":
             if orientation == 1:
                 position = [Coordinate(0, 1), Coordinate(1, 1), Coordinate(1, 2), Coordinate(2, 2)]
+                orientation += 1
             else if orientation == 2:
                 position = [Coordinate(1, 1), Coordinate(1, 2), Coordinate(2, 0), Coordinate(2, 1)]
+                orientation += 1
             else if orientation == 3:
                 position = [Coordinate(0, 0), Coordinate(1, 0), Coordinate(1, 1), Coordinate(2, 2)]
+                orientation += 1
             else if orientation == 4:
                 position = [Coordinate(0, 1), Coordinate(0, 2), Coordinate(1, 0), Coordinate(1, 1)]
+                orientation = 1
 
         else if type == "T":
             if orientation == 1:
                 position = [Coordinate(0, 1), Coordinate(2, 1), Coordinate(1, 1), Coordinate(1, 2)]
+                orientation += 1
             else if orientation == 2:
                 position = [Coordinate(2, 1), Coordinate(2, 1), Coordinate(1, 1), Coordinate(1, 2)]
+                orientation += 1
             else if orientation == 3:
                 position = [Coordinate(2, 1), Coordinate(2, 1), Coordinate(1, 1), Coordinate(0, 1)]
+                orientation += 1
             else if orientation == 4:
                 position = [Coordinate(0, 1), Coordinate(1, 0), Coordinate(1, 1), Coordinate(1, 2)]
+                orientation = 1
 
         else if type == "Z":
             if orientation == 1:
                 position = [Coordinate(0, 2), Coordinate(1, 1), Coordinate(1, 2), Coordinate(2, 1)]
+                orientation += 1
             else if orientation == 2:
                 position = [Coordinate(1, 0), Coordinate(1, 1), Coordinate(2, 1), Coordinate(2, 2)]
+                orientation += 1
             else if orientation == 3:
                 position = [Coordinate(0, 1), Coordinate(1, 0), Coordinate(1, 1), Coordinate(2, 0)]
+                orientation += 1
             else if orientation == 4:
                 position = [Coordinate(0, 0), Coordinate(0, 1), Coordinate(1, 1), Coordinate(1, 2)]
+                orientation = 1
 
     def Fall():
         for i in position:
